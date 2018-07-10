@@ -1,0 +1,21 @@
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'uploads/style.css' %}" />
+{% block content %}
+{% if user.is_authenticated %}
+     <li>User: {{ user.get_username }}</li>
+     <li><a href="{% url 'logout'%}?next={{request.path}}">Logout</a></li>
+{% endif %}
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.tipo }}
+    {{ form.file }}
+    <button type="submit">Upload</button>
+  </form>
+  {% if show_upload_status %}
+    {% if uploaded_file_success %}
+      <p>File uploaded</p>
+    {% else %}
+      <p>File upload failed</p>
+    {% endif %}
+  {% endif %}
+{% endblock %}
