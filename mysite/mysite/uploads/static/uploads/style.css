@@ -1,0 +1,9 @@
+div.username_container {
+  display: inline;
+  float: left;
+}
+
+div.logout_container {
+  display: inline;
+  float: right;
+}

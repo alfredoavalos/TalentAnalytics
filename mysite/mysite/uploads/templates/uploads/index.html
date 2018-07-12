@@ -1,21 +1,34 @@
+<head>
+    <meta charset="UTF-8">
+    <link href="https://cdn.pydata.org/bokeh/release/bokeh-0.13.0.min.css" rel="stylesheet" type="text/css">
+    <script src="https://cdn.pydata.org/bokeh/release/bokeh-0.13.0.min.js"></script>
+</head>
 {% load static %}
-<link rel="stylesheet" type="text/css" href="{% static 'uploads/style.css' %}" />
+<link rel="stylesheet" type="text/css" href="uploads/style.css" />
 {% block content %}
 {% if user.is_authenticated %}
-     <li>User: {{ user.get_username }}</li>
-     <li><a href="{% url 'logout'%}?next={{request.path}}">Logout</a></li>
+  <div>
+     <div class="username_container">User: {{ user.get_username }}</div>
+     <div class="logout_container"><a href="{% url 'logout'%}?next={{request.path}}">Logout</a></div>
+  </div>
 {% endif %}
   <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
-    {{ form.tipo }}
-    {{ form.file }}
+    <table>
+      {{ form.as_table }}
+    </table>
     <button type="submit">Upload</button>
   </form>
+
   {% if show_upload_status %}
     {% if uploaded_file_success %}
-      <p>File uploaded</p>
+      <p>Carga exitosa</p>
+      {{ resumen|safe }}
+      <p></p>
+      {{ div|safe }}
+      {{ script|safe }}
     {% else %}
-      <p>File upload failed</p>
+      <p>Error en carga de archivo: {{ error_list }}</p>
     {% endif %}
   {% endif %}
 {% endblock %}
