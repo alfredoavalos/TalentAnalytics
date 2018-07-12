@@ -1,0 +1,17 @@
+<head>
+    <meta charset="UTF-8">
+    <link href="https://cdn.pydata.org/bokeh/release/bokeh-0.13.0.min.css" rel="stylesheet" type="text/css">
+    <script src="https://cdn.pydata.org/bokeh/release/bokeh-0.13.0.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Markazi+Text" rel="stylesheet">
+</head>
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'base/style.css' %}" />
+<body>
+{% if user.is_authenticated %}
+  <ul>
+     <li class="username_li">User: {{ user.get_username }}</li>
+     <li class="logout_li"><a href="{% url 'logout'%}?next={{request.path}}">Logout</a></li>
+  </ul>
+
+  {% block content %}{% endblock content %}
+{% endif %}

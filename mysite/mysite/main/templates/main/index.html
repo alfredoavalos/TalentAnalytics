@@ -1,10 +1,14 @@
-{% if user.is_authenticated %}
-     <li>User: {{ user.get_username }}</li>
-     <li><a href="{% url 'logout'%}?next={{request.path}}">Logout</a></li>
-{% endif %}
-<div>
+{% extends 'base.html' %}
+
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'main/style.css' %}" />
+
+{% block content%}
+<div class = "links">
+  <h2> Enlaces de interés </h2>
   <a href="{% url 'uploads:index' %}">Upload</a>
 </div>
-<div>
-
+<div class = 'views'>
+  <h2> Bienvenido! </h2>
 </div>
+{% endblock %}

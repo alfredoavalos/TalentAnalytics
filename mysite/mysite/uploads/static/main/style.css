@@ -1,0 +1,9 @@
+div.links {
+  float:left;
+  width:50%;
+  border-style: none, solid, none, none;
+}
+div.views {
+  float:right;
+  width: 50%;
+}

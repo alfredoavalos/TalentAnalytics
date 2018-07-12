@@ -1,9 +1,9 @@
-div.username_container {
+
+form.form_container {
   display: inline;
-  float: left;
+  position: relative;
 }
 
-div.logout_container {
-  display: inline;
-  float: right;
+table.dataframe {
+  align-content: center;
 }
