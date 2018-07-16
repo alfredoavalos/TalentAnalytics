@@ -1,19 +1,30 @@
 from django import forms
+from datetime import datetime, timedelta
 
-types = [('headcount', 'Head Count'), ('dcp', 'DCP'), ('empleado', 'Empleado'),\
+types = [('headcount', 'Head Count'), ('empleado', 'Empleados'),\
 (u'desempeño', u'Desempeño'), ('vacante', 'Vacante'), ('potencial', 'Potencial'),\
 ('hogan', 'Hogan')
 ]
 
-periodos = [('enero','Enero'),('febrero','Febrero'),('marzo','Marzo'),('abril','Abril'),\
-('mayo','Mayo'),('junio','Junio'),('julio','Julio'),('agosto','Agosto'),('setiembre', 'Setiembre'),\
-('octubre','Octubre'),('noviembre','Noviembre'),('diciembre','Diciembre')]
+months = {
+    1: 'Enero',\
+    2: 'Febrero',\
+    3: 'Marzo',\
+    4: 'Abril',\
+    5: 'Mayo',\
+    6: 'Junio',\
+    7: 'Julio',\
+    8: 'Agosto',\
+    9: 'Setiembre',\
+    10: 'Octubre',\
+    11: 'Noviembre',\
+    12: 'Diciembre',\
+}
+years = [(datetime.today()+timedelta(days=30 * i)).year for i in range(1,13)]
+month = [months[(datetime.today()+timedelta(days=30 * i)).month] for i in range(1,13)]
+periodos = [(month[i].lower(), month[i]+' '+str(years[i])) for i in range(11)]
 
 class UploadFileForm(forms.Form):
     tipo = forms.ChoiceField(choices = types,widget=forms.Select(choices = types))
     periodo = forms.ChoiceField(choices = periodos, widget=forms.Select(choices=types))
     archivo = forms.FileField()
-
-class FileFieldForm(forms.Form):
-    file_field = forms.FileField(widget=forms.ClearableFileInput(attrs={'multiple':True}))
-    tipo = forms.ChoiceField(choices = types,widget=forms.Select(choices = types))

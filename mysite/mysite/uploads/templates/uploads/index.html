@@ -18,12 +18,16 @@
   {% if show_upload_status %}
     {% if uploaded_file_success %}
       <p>Carga exitosa</p>
-      {{ resumen|safe }}
+      <div class='dataframe_container'>
+        {{ resumen|safe }}
+      </div>
       <p></p>
-      {{ div|safe }}
-      {{ script|safe }}
+      <div class='plots_container'>
+        {{ div|safe }}
+        {{ script|safe }}
+      </div>
     {% else %}
-      <p>Error en carga de archivo: {{ error_list }}</p>
+      <p>Error en carga de archivo: {{ error_list|safe }}</p>
     {% endif %}
   {% endif %}
 </body>

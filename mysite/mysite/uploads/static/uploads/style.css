@@ -7,3 +7,8 @@ form.form_container {
 table.dataframe {
   align-content: center;
 }
+
+div.dataframe_container {
+  border-style: solid;
+  
+}

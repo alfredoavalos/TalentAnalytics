@@ -1,9 +1,13 @@
-div.links {
+.links {
   float:left;
   width:50%;
+  display: inline-block;
+  margin: 0 auto;
   border-style: none, solid, none, none;
 }
-div.views {
+.views {
   float:right;
   width: 50%;
+  display: inline-block;
+  margin: 0 auto;
 }

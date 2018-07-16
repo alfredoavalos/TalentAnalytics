@@ -22,10 +22,33 @@ ul {
 li.username_li {
   display:inline;
   float:left;
+  padding-left: 5px;
   margin-right:38%;
 }
 
 li.logout_li {
   display:inline;
   margin-left: 50%;
+}
+div.links {
+  float:left;
+  width:50%;
+  display: inline-block;
+  margin: 0 auto;
+  border-style: none, solid, none, none;
+}
+div.views {
+  float:right;
+  width: 50%;
+  display: inline-block;
+  margin: 0 auto;
+}
+
+form.form_container {
+  display: inline;
+  position: relative;
+}
+
+table.dataframe {
+  align-content: center;
 }
