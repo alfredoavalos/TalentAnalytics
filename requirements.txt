@@ -3,3 +3,4 @@ numpy
 django
 bokeh
 azure-storage
+holoviews
