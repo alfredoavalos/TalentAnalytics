@@ -1,0 +1,14 @@
+
+form.form_container {
+  display: inline;
+  position: relative;
+}
+
+table.dataframe {
+  align-content: center;
+}
+
+div.dataframe_container {
+  border-style: solid;
+  
+}

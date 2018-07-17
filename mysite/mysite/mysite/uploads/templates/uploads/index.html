@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'uploads/style.css' %}" />
+{% block content %}
+
+<h2> Formulario de carga de datos </h2>
+
+<div class='form_container'>
+  <form method="post" enctype="multipart/form-data" style='display:inline-block'>
+    {% csrf_token %}
+    <table class = 'form-input'>
+      {{ form.as_table }}
+    </table>
+    <button type="submit" >Upload</button>
+  </form>
+</div>
+  {% if show_upload_status %}
+    {% if uploaded_file_success %}
+      <p>Carga exitosa</p>
+      <div class='dataframe_container'>
+        {{ resumen|safe }}
+      </div>
+      <p></p>
+      <div class='plots_container'>
+        {{ div|safe }}
+        {{ script|safe }}
+      </div>
+    {% else %}
+      <p>Error en carga de archivo: {{ error_list|safe }}</p>
+    {% endif %}
+  {% endif %}
+</body>
+
+{% endblock %}

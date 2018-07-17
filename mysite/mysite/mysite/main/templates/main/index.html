@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'main/style.css' %}" />
+
+{% block content%}
+<div class = "links">
+  <h2> Enlaces de interés </h2>
+  <div>
+    <a href="{% url 'uploads:index' %}">Carga de Datos</a>
+  </div>
+  <div>
+    <a >Visualizador</a>
+  </div>
+  <div>
+    <a href="{% static 'main/media/Plantillas_Carga_Excel.zip' %}"> Descarga de Plantillas </a>
+  </div>
+</div>
+<div class = 'views'>
+  <h2> Bienvenido! </h2>
+</div>
+{% endblock %}

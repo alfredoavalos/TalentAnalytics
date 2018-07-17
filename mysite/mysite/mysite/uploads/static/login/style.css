@@ -1,0 +1,12 @@
+.login_form {
+  display: inline-block;
+  text-align: center;
+
+}
+.form_container {
+  text-align: center;
+  padding-top: 5%
+  border-style: solid;
+  border-width: medium;
+  border-color: #4CAF50;
+}
