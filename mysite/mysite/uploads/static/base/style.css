@@ -49,6 +49,11 @@ form.form_container {
   position: relative;
 }
 
-table.dataframe {
-  align-content: center;
+div.plots_container {
+  margin: auto;
+}
+
+div.dataframe_container {
+  margin: auto;
+  padding-left: 33%;
 }

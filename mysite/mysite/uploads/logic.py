@@ -12,7 +12,7 @@ fields = {
     'apellidos_nombres','sexo','estado_civil','nacionalidad','direccion','categoria_ocupacional','tipo_contrato',\
     'sindicalizado','regimen_salud','regimen_pensionario','situación_educativa','tipo_institucion_educativa',\
     'nombre_institucion_educativa','carrera','fecha_ingreso','fecha_cese','motivo_cese','sueldo_basico','porcentaje_bono',\
-    'nombre_cargo','metodo_valorizacion','valor_cargo'],\
+    'nombre_cargo','metodo_valorizacion','valor_cargo','nombre_area'],\
 
     u'desempeño': ['unidad_negocio','nro_documento','periodo','empresa','apellidos_nombres',\
     'calificacion_objetivos','calificacion_cometencias','calificacion_desempeno'],\
