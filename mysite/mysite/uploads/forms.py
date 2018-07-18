@@ -1,10 +1,9 @@
 from django import forms
 from datetime import datetime, timedelta
 
-types = [('headcount', 'Head Count'), ('empleado', 'Empleados'),\
-(u'desempeño', u'Desempeño'), ('vacante', 'Vacante'), ('potencial', 'Potencial'),\
-('hogan', 'Hogan')
-]
+#('headcount', 'Head Count'),
+types = [('empleado', 'Empleados'),(u'desempeño', u'Desempeño'), ('vacante', 'Vacante'),\
+ ('potencial', 'Potencial'),('hogan', 'Hogan')]
 
 months = {
     1: 'Enero',\
