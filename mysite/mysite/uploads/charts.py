@@ -61,7 +61,7 @@ def calculate_age(born):
     return today.year - born.year - ((today.month, today.day) < (born.month, born.day))
 
 def scatter_bonos(df):
-    f = figure(plot_width=500, plot_height=500, title=u'Distribución de Porcentaje de Bono por Valor de Cargo', x_range=df['valor_cargo'].unique())
+    f = figure(plot_width=500, plot_height=300, title=u'Distribución de Porcentaje de Bono por Valor de Cargo', x_range=df['valor_cargo'].unique())
     f.scatter(x=df['valor_cargo'].unique(), y= df['porcentaje_bono'])
     return f
 
@@ -77,7 +77,7 @@ def violin_sueldos(df):
 
 def histograma(df,field):
     hist, edges = np.histogram(df[field].values, density=True, bins='auto')
-    f = figure(plot_width=500, plot_height=500, title='Distribución de {}'.format(field))
+    f = figure(plot_width=500, plot_height=300, title='Distribución de {}'.format(field))
     f.quad(top=hist, bottom=0, left=edges[:-1], right=edges[1:], fill_color="#036564", line_color="#033649")
     return f
 
@@ -85,6 +85,6 @@ def categorical_barplot(df,field):
     #y is the categorical field name, x is the value count percentage
     #.format(' '.join(field.split('_')).lower().title())
     df = df[~pd.isnull(df[field])]
-    f = figure(plot_width=500, plot_height=500, title=u'Distribución de {}'.format(' '.join(field.split('_')).lower().title()), y_range=df[field].unique())
+    f = figure(plot_width=500, plot_height=300, title=u'Distribución de {}'.format(' '.join(field.split('_')).lower().title()), y_range=df[field].unique())
     f.hbar(y=df[field].unique(), height=0.2, right=df[field].value_counts()/df.shape[0])
     return f
