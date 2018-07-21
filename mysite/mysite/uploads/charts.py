@@ -23,25 +23,78 @@ def charts(file, tipo):
         df['edad'] = df['fecha_nacimiento'].apply(calculate_age)
         df['antiguedad'] = df['fecha_ingreso'].apply(calculate_age)
 
-        #source_genero = ColumnDataSource(data = dict(x=df['GENERO'].unique().tolist(), y=(df['GENERO'].value_counts()/df.shape[0]).values.tolist()))
+        plots = []
 
-        #df['edad'] = df['FEC_NACIMIENTO'].apply(calculate_age)
-        #measured = df['edad'].values
-        #hist, edges = np.histogram(measured, density=True, bins='auto')
+        plots.extend([categorical_barplot(df, field) for field in categorical_fields])
+        plots.extend([scatter_bonos(df),histograma(df, 'edad'),histograma(df, 'antiguedad')])
 
-        #s1 = figure(plot_width=250, plot_height=250, title=u'Distribución de Géneros', x_range=df['GENERO'].unique().tolist())
-        #s1.vbar(x='x', top='y', width=0.9, source=source_genero)
+        script, div = components(gridplot(plots, ncols=2), CDN)
+        return script, div
 
-        #s2 = figure(plot_width=250, plot_height=250, title='Distribución de Edades')
-        #s2.quad(top=hist, bottom=0, left=edges[:-1], right=edges[1:], fill_color="#036564", line_color="#033649")
+    if tipo == u'desempeño':
 
-        #plots = [s1,s2]
+        categorical_fields = ['sexo','estado_civil','nacionalidad','categoria_ocupacional',\
+        'tipo_contrato','sindicalizado','regimen_salud','regimen_pensionario','situación_educativa',\
+        'tipo_institucion_educativa','motivo_cese']
+
+        df['edad'] = df['fecha_nacimiento'].apply(calculate_age)
+        df['antiguedad'] = df['fecha_ingreso'].apply(calculate_age)
 
         plots = []
 
         plots.extend([categorical_barplot(df, field) for field in categorical_fields])
         plots.extend([scatter_bonos(df),histograma(df, 'edad'),histograma(df, 'antiguedad')])
-#,violin_sueldos(df), violin_areas(df)
+
+        script, div = components(gridplot(plots, ncols=2), CDN)
+        return script, div
+
+    if tipo == 'vacante':
+
+        categorical_fields = ['sexo','estado_civil','nacionalidad','categoria_ocupacional',\
+        'tipo_contrato','sindicalizado','regimen_salud','regimen_pensionario','situación_educativa',\
+        'tipo_institucion_educativa','motivo_cese']
+
+        df['edad'] = df['fecha_nacimiento'].apply(calculate_age)
+        df['antiguedad'] = df['fecha_ingreso'].apply(calculate_age)
+
+        plots = []
+
+        plots.extend([categorical_barplot(df, field) for field in categorical_fields])
+        plots.extend([scatter_bonos(df),histograma(df, 'edad'),histograma(df, 'antiguedad')])
+
+        script, div = components(gridplot(plots, ncols=2), CDN)
+        return script, div
+
+    if tipo == 'potencial':
+
+        categorical_fields = ['sexo','estado_civil','nacionalidad','categoria_ocupacional',\
+        'tipo_contrato','sindicalizado','regimen_salud','regimen_pensionario','situación_educativa',\
+        'tipo_institucion_educativa','motivo_cese']
+
+        df['edad'] = df['fecha_nacimiento'].apply(calculate_age)
+        df['antiguedad'] = df['fecha_ingreso'].apply(calculate_age)
+
+        plots = []
+
+        plots.extend([categorical_barplot(df, field) for field in categorical_fields])
+        plots.extend([scatter_bonos(df),histograma(df, 'edad'),histograma(df, 'antiguedad')])
+
+        script, div = components(gridplot(plots, ncols=2), CDN)
+        return script, div
+
+    if tipo == 'hogan':
+
+        categorical_fields = ['sexo','estado_civil','nacionalidad','categoria_ocupacional',\
+        'tipo_contrato','sindicalizado','regimen_salud','regimen_pensionario','situación_educativa',\
+        'tipo_institucion_educativa','motivo_cese']
+
+        df['edad'] = df['fecha_nacimiento'].apply(calculate_age)
+        df['antiguedad'] = df['fecha_ingreso'].apply(calculate_age)
+
+        plots = []
+
+        plots.extend([categorical_barplot(df, field) for field in categorical_fields])
+        plots.extend([scatter_bonos(df),histograma(df, 'edad'),histograma(df, 'antiguedad')])
 
         script, div = components(gridplot(plots, ncols=2), CDN)
         return script, div
