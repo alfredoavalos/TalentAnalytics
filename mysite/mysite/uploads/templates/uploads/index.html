@@ -13,9 +13,10 @@
       {{ form.as_table }}
     </table>
     <p></p>
-    <button type="submit" class="btn btn-primary">Upload</button>
+    <button type="submit" class="btn btn-primary" onclick="">Upload</button>
   </form>
 </div>
+<div class="loader active"></div>
   {% if show_upload_status %}
     {% if uploaded_file_success %}
       <p>Carga exitosa, se cargaron {{ n_rows }} datos</p>
@@ -32,5 +33,14 @@
     {% endif %}
   {% endif %}
 </body>
+<script type="text/javascript">
 
+$('button').on('click', function(event) {
+    if($('.loader').hasClass('active') == false) {
+        $('.loader').addClass('active');
+    } else {
+        $('.loader').removeClass('active');
+    }
+});
+</script>
 {% endblock %}
