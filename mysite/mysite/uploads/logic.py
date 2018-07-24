@@ -1,9 +1,6 @@
 import pandas as pd
 from datetime import datetime
 
-#@TODO cambiar NRO_DNI a nro_documento
-#Generamos los campos por defecto para la validación, aquellos archivos que no cuenten con
-#estos campos serán rechazados
 fields = {
     'headcount': ['EMPRESA','UNIDAD','NOMBRE','FEC_INGRESO','FEC_CESE','NRO_DNI',\
     'FEC_NACIMIENTO','GENERO','PUESTO','AREA','NIVEL','MOT_CESE', 'periodo', 'nro_documento'],\
@@ -43,21 +40,23 @@ def handle_uploaded_file(file,tipo, periodo):
     try:
         df = pd.read_excel(file,sheet_name='DATA')
     except:
-        return False
+        return False, []
 
-    if null_check(df) and duplicate_check(df) and field_check(df,tipo) and non_empty_check(df) and time_check(df, periodo):
+    pk = df['unidad_negocio']+df['periodo']+df['tipo_documento']+df['nro_documento'].apply(str)
+
+    if null_check(pk) and duplicate_check(pk) and null_check(df['nro_documento']) and duplicate_check(df['nro_documento']) and field_check(df,tipo) and non_empty_check(df) and time_check(df, periodo):
         return True, []
     else:
-        return False, dict(zip(errors,[null_check(df), duplicate_check(df), field_check(df,tipo), non_empty_check(df), time_check(df,periodo)]))
+        return False, dict(zip(errors,[null_check(pk), duplicate_check(pk), field_check(df,tipo), non_empty_check(df), time_check(df,periodo)]))
 
 def non_empty_check(df):
     return df.shape[0] > 0
 
 def null_check(df):
-    return df[pd.isnull(df['nro_documento'])].shape[0] == 0
+    return df.isnull().apply(lambda x: 1 if x else 0).sum() == 0
 
 def duplicate_check(df):
-    return df[df['nro_documento'].duplicated()].shape[0] == 0
+    return df.duplicated().apply(lambda x: 1 if x else 0).sum() == 0
 
 def field_check(df,tipo):
     ok = True

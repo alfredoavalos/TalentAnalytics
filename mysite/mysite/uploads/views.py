@@ -8,6 +8,7 @@ from .store_file import store_file_to_azure
 from .logic import handle_uploaded_file
 from .charts import charts, datasummary
 import os
+import pandas as pd
 from datetime import datetime, timedelta
 
 @login_required
@@ -38,6 +39,7 @@ def index(request):
                 context['uploaded_file_success'] = True
                 context['script'] = script
                 context['div'] = div
+                context['n_rows'] = pd.read_excel(request.FILES['archivo'],sheet_name='DATA').shape[0]
 
                 return render(request, 'uploads/index.html', context)
             else:

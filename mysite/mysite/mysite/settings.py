@@ -25,7 +25,7 @@ SECRET_KEY = 'k1(gvao)1gfz1)n#+%4#=$iubnzjeb3wq4ecaj_)u1-ie^mp-j'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['talentanalyticsbreca.azurewebsites.net']
+ALLOWED_HOSTS = []#['talentanalyticsbreca.azurewebsites.net']
 
 
 # Application definition

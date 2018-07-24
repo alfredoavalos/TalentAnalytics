@@ -107,7 +107,7 @@ def datasummary(file):
         total_missings[key] = df[key].isnull().sum()
     missings_df = pd.DataFrame.from_dict(total_missings, orient='index').rename(columns={0:'N° de Faltantes'})
     missings_df['N° de Registros'] = df.count()
-    return missings_df.to_html()
+    return missings_df[missings_df['N° de Faltantes'] > 0].to_html(classes="table table-hover")
 
 def calculate_age(born):
     today = date.today()

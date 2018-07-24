@@ -3,15 +3,25 @@
     <link href="https://cdn.pydata.org/bokeh/release/bokeh-0.13.0.min.css" rel="stylesheet" type="text/css">
     <script src="https://cdn.pydata.org/bokeh/release/bokeh-0.13.0.min.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Markazi+Text" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </head>
 {% load static %}
 <link rel="stylesheet" type="text/css" href="{% static 'base/style.css' %}" />
 <body>
 {% if user.is_authenticated %}
-  <ul>
-     <li class="username_li">User: {{ user.get_username }}</li>
-     <li class="logout_li"><a href="{% url 'logout'%}?next={{request.path}}">Logout</a></li>
-  </ul>
 
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <img class='navbar-brand logo_breca' src="{% static 'img/grupobreca.jpg' %}">
+  <li class='nav_link'> <a href="{% url 'main:index' %}"> Inicio </a></li>
+  <li class='nav_link'> <a href="{% url 'uploads:index' %}"> Datos </a></li>
+  <li class='nav_link'> <a href=''> Tablero </a></li>
+  <li class='nav_link'> <a href=''> Proyecto </a></li>
+  <li class='nav_link'> <a href=''> Blog </a></li>
+  <li class="nav_link"> Usuario: {{ user.get_username }} </li>
+  <li class="nav_link"> <a href="{% url 'logout'%}?next={{request.path}}">Logout</a> </li>
+</nav>
   {% block content %}{% endblock content %}
 {% endif %}
